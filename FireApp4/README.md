@@ -49,3 +49,9 @@ Previously we were using `addValueEventListener` but now to display in ListView 
 
             }
         });
+
+There is still something that we need to change in this project. If someone changes some value in the db then no updation in the ListView take place at runtime because inside onChildChanged we haven't written anything.
+
+There we need to write some code like : First we need to get the position where the data is chagned and then we need to put that chagned value into the ArrayList and then notify the adapter
+
+With the help of Firebase UI this thing can be easily done.
