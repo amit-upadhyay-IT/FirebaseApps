@@ -36,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
                 String value = dataSnapshot.getValue(String.class);
                 mValueView.setText(value);
 
+                // This code snipet will only if we have a three objects below the Name.
+                // i.e. to display multiple views we can use the concept given below
+                /*Map<String, String> map = dataSnapshot.getValue(Map.class);
+
+                String name = map.get("Name");
+                String age = map.get("Age");
+                String profession = map.get("Profession");
+
+                Log.v("TAG", "Name "+name);
+                Log.v("TAG", "Age "+age);
+                Log.v("TAG", "Profession "+profession);
+*/
             }
 
             @Override
