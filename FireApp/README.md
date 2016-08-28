@@ -1,17 +1,17 @@
 # Sends data to server
 
-Important points :
+#Important points :
 
-1) After setting up firebase include these dependencies :
+#1) After setting up firebase include these dependencies :
 
     compile 'com.google.firebase:firebase-core:9.2.0'
     compile 'com.firebase:firebase-client-android:2.5.2'
     
-    (you need to include these dependencies only when you are not getting 'cloud' option in your ProjectStructure).
+(you need to include these dependencies only when you are not getting 'cloud' option in your ProjectStructure).
     
-    Also give the permission to internet
+Also give the permission to internet
 
-2) You can simply use this :
+#2) You can simply use this :
 
 
     private Button mSendData;
