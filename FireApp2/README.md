@@ -21,4 +21,8 @@ eg:
 
         Firebase.setAndroidContext(this);
     }
-}
+    }
+
+Also don't forget to include `android:name=".FireApp2"` in the application tag of manifest.xml file
+
+In this app I've used concept of push() to create a child with a new key each time
