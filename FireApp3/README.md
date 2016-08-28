@@ -47,4 +47,16 @@ Ex:
             }
         });
 
+
+To fetch multiple data from server you can use Map data structure. EG:
+
+                Map<String, String> map = dataSnapshot.getValue(Map.class);
+
+                String name = map.get("Name");
+                String age = map.get("Age");
+                String profession = map.get("Profession");
+
+                Log.v("TAG", "Name "+name);
+                Log.v("TAG", "Age "+age);
+                Log.v("TAG", "Profession "+profession);
 And its done..!!
