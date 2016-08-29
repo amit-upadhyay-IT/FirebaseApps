@@ -1,5 +1,6 @@
 package com.amitupadhyay.fireapp6;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MAIN_ACTIVITY";
 
+    ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -74,10 +79,17 @@ public class MainActivity extends AppCompatActivity {
         mGoogleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progress = ProgressDialog.show(MainActivity.this, "Please Wait", "Signing in...", true);
                 signIn();
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 
     @Override
@@ -105,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } else {
                 // Google Sign In failed, update UI appropriately
-                // ...
+                Toast.makeText(this, "Sign in failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -118,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(MainActivity.this, "Successfully loged in "+acct.getDisplayName(), Toast.LENGTH_SHORT).show();
+                        progress.dismiss();
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the

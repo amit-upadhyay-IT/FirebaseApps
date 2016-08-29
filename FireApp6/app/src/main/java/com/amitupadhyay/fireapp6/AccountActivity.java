@@ -28,6 +28,7 @@ public class AccountActivity extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() == null)
                 {
                     startActivity(new Intent(AccountActivity.this, MainActivity.class));
+                    finishAffinity();
                 }
             }
         };
@@ -48,5 +49,11 @@ public class AccountActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 }
