@@ -18,3 +18,7 @@ Fetching data and displaying in ListView
 
 #5) FireApp5
 User auth with email and login
+
+
+#6) FireApp6
+User auth using google account
