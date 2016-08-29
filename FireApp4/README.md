@@ -55,3 +55,5 @@ There is still something that we need to change in this project. If someone chan
 There we need to write some code like : First we need to get the position where the data is chagned and then we need to put that chagned value into the ArrayList and then notify the adapter
 
 With the help of Firebase UI this thing can be easily done.
+
+#-Amit Upadhyay
