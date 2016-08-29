@@ -14,3 +14,7 @@ Retrive data from server in our app.
 
 #4) FireApp4
 Fetching data and displaying in ListView
+
+
+#5) FireApp5
+User auth with email and login
