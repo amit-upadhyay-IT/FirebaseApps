@@ -24,7 +24,8 @@ User auth with email and login
 User auth using google account
 
 
-
+#7) FireApp7
+retriving data using firebase ui in listview
 
 
 # - Amit Upadhyay
