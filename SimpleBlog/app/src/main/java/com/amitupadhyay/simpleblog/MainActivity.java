@@ -1,8 +1,10 @@
 package com.amitupadhyay.simpleblog;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +20,16 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.action_add)
+        {
+            startActivity(new Intent(MainActivity.this, PostActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
