@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
+
+        mDatabase.keepSynced(true);
 
         mBlogList = (RecyclerView) findViewById(R.id.blog_list);
         mBlogList.setHasFixedSize(true);
@@ -86,10 +90,23 @@ public class MainActivity extends AppCompatActivity {
             post_desc.setText(desc);
         }
 
-        public void setImage(Context ctx, String image)
+        public void setImage(final Context ctx, final String image)
         {
-            ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
-            Picasso.with(ctx).load(image).into(post_image);
+            final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
+
+            //Picasso.with(ctx).load(image).into(post_image);
+
+            Picasso.with(ctx).load(image).networkPolicy(NetworkPolicy.OFFLINE).into(post_image, new Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError() {
+                    Picasso.with(ctx).load(image).into(post_image);
+                }
+            });
         }
 
 
