@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -25,6 +27,8 @@ public class PostActivity extends AppCompatActivity {
     private StorageReference mStorage;
     private ProgressDialog mProgress;
 
+    private DatabaseReference mDatabase;
+
     private static final int GALLERY_REQUEST = 1;
 
     @Override
@@ -33,6 +37,8 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         mStorage = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");// we want to sotre everything in the clicd of the root reference.
+
 
         mSelectImage = (ImageButton) findViewById(R.id.imageSelect);
         mPostTitle = (EditText) findViewById(R.id.titleFeild);
@@ -68,8 +74,8 @@ public class PostActivity extends AppCompatActivity {
         mProgress.setMessage("Posting to Blog...");
         mProgress.show();
 
-        String title_val = mPostTitle.getText().toString().trim();
-        String desc_val = mPostDesc.getText().toString().trim();
+        final String title_val = mPostTitle.getText().toString().trim();
+        final String desc_val = mPostDesc.getText().toString().trim();
 
         if (!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null)
         {
@@ -82,7 +88,14 @@ public class PostActivity extends AppCompatActivity {
 
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
+                    DatabaseReference newPost = mDatabase.push(); // push means that it creates a unique random id.
+                    newPost.child("title").setValue(title_val);
+                    newPost.child("desc").setValue(desc_val);
+                    newPost.child("image").setValue(downloadUrl.toString());
+
                     mProgress.dismiss();
+
+                    startActivity(new Intent(PostActivity.this, MainActivity.class));
 
                 }
             });
