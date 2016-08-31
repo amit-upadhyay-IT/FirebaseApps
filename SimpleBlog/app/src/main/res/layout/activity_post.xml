@@ -13,7 +13,7 @@
         android:background="#00ffffff"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:id="@+id/imageButon"
+        android:id="@+id/imageSelect"
         android:src="@mipmap/add_btn"/>
 
     <EditText
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@id/imageButon"
-        android:id="@+id/postTitle"
+        android:layout_below="@id/imageSelect"
+        android:id="@+id/titleFeild"
 
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -37,16 +37,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/postDesc"
+        android:id="@+id/descFeild"
         android:padding="15dp"
-        android:layout_below="@id/postTitle"
+        android:layout_below="@id/titleFeild"
         android:hint="@string/post_description"/>
 
     <Button
         android:text="Submit Post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/submitBtn"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
