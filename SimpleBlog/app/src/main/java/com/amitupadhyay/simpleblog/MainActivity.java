@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -51,11 +52,33 @@ public class MainActivity extends AppCompatActivity {
                 mDatabase
         ) {
             @Override
-            protected void populateViewHolder(BlogViewHolder viewHolder, Blog model, int position) {
+            protected void populateViewHolder(BlogViewHolder viewHolder, Blog model, final int position) {
 
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setDesc(model.getDesc());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
+
+                viewHolder.post_desc.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(MainActivity.this, "Clicked on Description "+(position+1), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                viewHolder.post_title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(MainActivity.this, "Clicked on Post Title "+(position+1), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                viewHolder.post_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(MainActivity.this, "Clicked on Image "+(position+1), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, ItemListActivity.class));
+                    }
+                });
 
             }
         };
@@ -71,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
     {
 
         View mView;
+        TextView post_title;
+        TextView post_desc;
+        ImageView post_image;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
@@ -80,19 +106,19 @@ public class MainActivity extends AppCompatActivity {
 
         public void setTitle(String title)
         {
-            TextView post_title = (TextView) mView.findViewById(R.id.post_title);
+            post_title = (TextView) mView.findViewById(R.id.post_title);
             post_title.setText(title);
         }
 
         public void setDesc(String desc)
         {
-            TextView post_desc = (TextView) mView.findViewById(R.id.post_desc);
+            post_desc = (TextView) mView.findViewById(R.id.post_desc);
             post_desc.setText(desc);
         }
 
         public void setImage(final Context ctx, final String image)
         {
-            final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
+            post_image = (ImageView) mView.findViewById(R.id.post_image);
 
             //Picasso.with(ctx).load(image).into(post_image);
 
