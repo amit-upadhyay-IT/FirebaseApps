@@ -72,13 +72,13 @@ public class PostActivity extends AppCompatActivity {
     private void startPosting() {
 
         mProgress.setMessage("Posting to Blog...");
-        mProgress.show();
 
         final String title_val = mPostTitle.getText().toString().trim();
         final String desc_val = mPostDesc.getText().toString().trim();
 
         if (!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageUri != null)
         {
+            mProgress.show();
             // only now the user is able to post to database.
             StorageReference filepath = mStorage.child("Blog_Images").child(mImageUri.getLastPathSegment());
 
