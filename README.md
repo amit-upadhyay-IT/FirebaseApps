@@ -27,5 +27,7 @@ User auth using google account
 #7) FireApp7
 retriving data using firebase ui in listview
 
+#8) FireApp8
+Capture image from mobile cam. send it to server and then display it to the Application activity.
 
 # - Amit Upadhyay
