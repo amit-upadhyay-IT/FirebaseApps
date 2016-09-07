@@ -30,4 +30,7 @@ retriving data using firebase ui in listview
 #8) FireApp8
 Capture image from mobile cam. send it to server and then display it to the Application activity.
 
+# SimpleBlog
+This app contains use of almost all the above example apps
+
 # - Amit Upadhyay
