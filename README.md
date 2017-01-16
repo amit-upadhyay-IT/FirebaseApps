@@ -33,4 +33,6 @@ Capture image from mobile cam. send it to server and then display it to the Appl
 # SimpleBlog
 This app contains use of almost all the above example apps
 
+#Firebase SDK release mode - https://firebase.google.com/support/release-notes/android
+
 # - Amit Upadhyay
