@@ -35,4 +35,6 @@ This app contains use of almost all the above example apps
 
 #Firebase SDK release mode - https://firebase.google.com/support/release-notes/android
 
+Some FAQ you can go through in your free time : https://firebase.google.com/support/faq
+
 # - Amit Upadhyay
